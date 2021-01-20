@@ -1,4 +1,4 @@
-# catatan_programming
+# Catatan Programming
 
 merupakan rangkuman dari belajar programming dari wahyu setiawan dengan daftar isi seperti:
 
