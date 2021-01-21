@@ -213,3 +213,14 @@ import (
     "math"
 )
 ```
+
+### Array and Slices
+
+mendeclarasikan array di golang
+
+```
+var buffer [256]byte
+```
+
+
+Slices 
