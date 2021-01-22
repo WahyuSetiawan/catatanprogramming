@@ -1,4 +1,3 @@
-
 ### Array and Slices
 
 mendeclarasikan array di golang
@@ -73,6 +72,8 @@ func main(){
 }
 ```
 
+### mengakses suatu nilai dari slices
+
 lalu setelah kita dapat melakukan pembuattan dari slices dan menambahknya dengan append langsugn gimana cara kita untuk mendapatkan suatu data dari slices itu sendiri
 
 ```
@@ -89,12 +90,51 @@ func  main(){
 }
 ```
 
-cara menghapus index dari suatu Slices
+### cara menghapus index dari suatu Slices
+
+untuk melakukan penghapusan terhadap slices kamu dapat menggunakan cara mengambil data dari berapa slices dan di skip ke slices selanjutnya
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    var strSlice = []string{"India", "Canada", "Japan", "Germany"}
+    fmt.Println(strSlice)
+
+    strSlice = RemoveIndex(strSlice, 3)
+    fmt.Println(strSlice)
+}
+
+func RemoveIndex(s []String, index int) []string{
+    return append(s[:index], s[index+1]...)
+}
+```
+
+### copy
+
+cara mengcopy dari slice ke slice selanjutnya dapat mengikuti langkah berikut
+
+```
+package main
+
+import "fmt"
+
+func main(){
+    a := []int{5, 6, 7}
+
+    b := make([]int, 5, 10)
+    copy(b, a)
+}
+```
 
 
 
 
 pemotongan dari array atau suatu dari data yang jamak seperti bute atau strings. untuk pemotongan array sendiri dapat menggunakan bentuk seperti `[mulai:hingga]`. contoh untuk pengambilan array :
+
+```
 
 ```
 
