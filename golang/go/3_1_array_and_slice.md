@@ -1,4 +1,6 @@
-### Array and Slices
+# Array and Slices
+
+# Array
 
 mendeclarasikan array di golang
 
@@ -6,7 +8,7 @@ mendeclarasikan array di golang
 var buffer [256]byte
 ```
 
-Slices
+## Slices
 
 Slices sndiri merupakan cara untuk mengatur dam menimplement collections data. cara mendeklarasikannya seperti
 
@@ -33,6 +35,29 @@ func main(){
     fmt.Println(reflect.ValueOf(intSlice).Kind())
     fmt.Println(reflect.ValueOf(strSlice).Kind())
 }
+```
+
+# cara memotong slice element
+
+pemotongan dari slice atau suatu dari data collection dapat menggunakan bentuk seperti `[mulai:hingga]`. contoh untuk pengambilan array :
+
+```
+package main
+
+import "fmt"
+
+func main(){
+    var countries = []string{"india", "japan", "canada", "australia"}
+
+    fmt.Println("Countries: %v/n", countries)
+
+    fmt.Println(":2 %v/n", countries[:2]) //menampilkan data dari awal hingga kurang dari index 2
+
+    fmt.Println("1:3 %v/n", countries[1:3]) // menampilkan data dari index 1 hingga 3
+
+    fmt.Println("2: %v/n", countries[2:]) // menampilkan data dari 2 hingga akhir
+}
+
 ```
 
 ### make
@@ -69,6 +94,21 @@ func main(){
     a[1] = 20
 
     a = append(a, 30, 40, 50, 60, 70, 80)
+}
+```
+
+### append ke slice yang sudah ada
+
+```
+package main
+
+import "fmt"
+
+func main(){
+    var slice1 = []string{"india", "japan", "canada"}
+    var slice2 = []string{"australia", "russia"}
+
+    slice2 = append(slice2, slice1...)
 }
 ```
 
@@ -129,13 +169,55 @@ func main(){
 }
 ```
 
+### melakukan perulangan untuk slices
 
-
-
-pemotongan dari array atau suatu dari data yang jamak seperti bute atau strings. untuk pemotongan array sendiri dapat menggunakan bentuk seperti `[mulai:hingga]`. contoh untuk pengambilan array :
-
-```
+untuk melakukan perulangan untuk slice kamu dapat menggunakan range
 
 ```
+package main
 
+import "fmt"
+
+func main() {
+    var strSlice = []String{"India", "Canada", "Japan", "Germany"}
+
+    for index, element := range strSlice {
+        fmt.Println(index, "--", element)
+    }
+
+    j := 0
+    for range strSlice {
+        fmt.Println(strSlice[j])
+        j++
+    }
+}
+```
+
+### Mengetahui bila slice existing
+
+```
+package main
+
+import "fmt"
+
+func main (){
+    var strSlice = []string{"India", "Canada", "Japan", "Germany", "Australia", "Rusia"}
+    fmt.Println(itemExists(strSlice, "Canada"))
+}
+
+func itemExists(slice interface{}, item interface{}) bool {
+    s := reflect.ValueOf(slice)
+
+    if s.Kind() != reflect.Slice{
+        panic("Invalid data-type")
+    }
+
+    for i := 0; i < s.len(); i ++ {
+        if s.Index(i).Interface() == item {
+            return true
+        }
+    }
+
+    return false
+}
 ```
